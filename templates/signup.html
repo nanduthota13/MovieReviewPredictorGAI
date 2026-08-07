@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movie Review Analyzer - Signup</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #111827, #7c3aed);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 32px;
+        width: 380px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      }
+      input, button { width: 100%; padding: 12px; border-radius: 10px; border: none; margin-top: 10px; box-sizing: border-box; }
+      button { background: #10b981; color: white; font-weight: bold; cursor: pointer; }
+      a { color: #bfdbfe; text-decoration: none; display: block; margin-top: 12px; }
+      .error { color: #fecaca; margin-top: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Create Account</h2>
+      <form method="post">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="New Password" required />
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+        <button type="submit">Sign Up</button>
+      </form>
+      {% if error %}<div class="error">{{ error }}</div>{% endif %}
+      <a href="{{ url_for('login') }}">Already have an account?</a>
+    </div>
+  </body>
+</html>

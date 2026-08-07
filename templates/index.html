@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movie Review Analyzer</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #020617, #1d4ed8);
+        color: #fff;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .card {
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      }
+      .poster {
+        width: 100%;
+        height: 220px;
+        border-radius: 12px;
+        object-fit: cover;
+        margin-bottom: 12px;
+      }
+      textarea, button {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 12px;
+        margin-top: 8px;
+        font-size: 14px;
+      }
+      button {
+        background: #f59e0b;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .logout { text-align: right; margin-bottom: 16px; }
+      .logout a { color: #fde68a; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logout">
+        <a href="{{ url_for('logout') }}">Logout</a>
+      </div>
+      <div class="header">
+        <h1>🎬 Movie Review Sentiment Analyzer</h1>
+        <p>Share your reviews for the movies below</p>
+      </div>
+      <form method="post" action="{{ url_for('submit_reviews') }}">
+        <div class="grid">
+          <div class="card">
+            <img class="poster" src="{{ url_for('static', filename='images/Devara.jpg') }}" alt="Devara poster" />
+            <h3>Review</h3>
+            <textarea name="review_Devara" rows="4" placeholder="Write your review for Devara"></textarea>
+          </div>
+          <div class="card">
+            <img class="poster" src="{{ url_for('static', filename='images/The Raja Saab.jpg') }}" alt="The Raja Saab poster" />
+            <h3>Review</h3>
+            <textarea name="review_The Raja Saab" rows="4" placeholder="Write your review for The Raja Saab"></textarea>
+          </div>
+          <div class="card">
+            <img class="poster" src="{{ url_for('static', filename='images/Spider-Man.jpg') }}" alt="Spider-Man poster" />
+            <h3>Review</h3>
+            <textarea name="review_Spider-Man: NWH" rows="4" placeholder="Write your review for Spider-Man: NWH"></textarea>
+          </div>
+        </div>
+        <button type="submit" style="margin-top: 20px;">Submit All Reviews</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Review Results</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #111827, #065f46);
+        color: white;
+        min-height: 100vh;
+      }
+      .container { max-width: 900px; margin: 0 auto; padding: 32px; }
+      .card { background: rgba(255,255,255,0.12); border-radius: 16px; padding: 24px; margin-top: 16px; }
+      table { width: 100%; border-collapse: collapse; } th, td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.2); text-align: left; }
+      a { color: #fde68a; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Review Summary</h2>
+      <p>Positive and negative counts for each movie</p>
+      <div class="card">
+        <table>
+          <tr><th>Movie</th><th>Positive</th><th>Negative</th></tr>
+          {% for movie, counts in summary.items() %}
+          <tr>
+            <td>{{ movie }}</td>
+            <td>{{ counts['Positive'] }}</td>
+            <td>{{ counts['Negative'] }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <p><a href="{{ url_for('home') }}">Go back to review page</a></p>
+    </div>
+  </body>
+</html>
